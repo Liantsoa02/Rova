@@ -12,34 +12,29 @@ import java.util.Date;
  * @author 1795904
  */
 public class Student extends Person{
-    String student_id;
-    String lastName;
-    String firstName;
-    Date dateBirth;
+    String studentID;
 
-    public Student(String n, String p, Date d) {
-        this.lastName = n;
-        this.firstName = p;
-        this.dateBirth = d;
-        this.student_id = createStudentId (n,p,d);
+    public Student(String nom, String prenom, Date dateNaissance) {
+        this.lastName = nom;
+        this.firstName = prenom;
+        this.dateBirth = dateNaissance;
+        this.studentID = createStudentId (nom,prenom,dateNaissance);
     }
     public String createStudentId(String lName, String fName, Date date){
-        String end = concatDate(date);
+        String end = date.getYear() + "-" + date.getMonth();
         return lName.substring(0,3)+fName.charAt(0)+end;
-    }
-    private String concatDate (Date date){
-        return date.getYear() + "-" + date.getMonth();
     }
 
     public String getStudentId() {
-        return student_id;
+        return studentID;
     }
 
     public void setStudentId(String student_id) {
-        this.student_id = student_id;
+        this.studentID = student_id;
     }
-    public void isSupervisedBy (Professor professor){
-        professor.students.add(this);
+
+    public void study() {
+        System.out.println("I study.");
     }
 
     
